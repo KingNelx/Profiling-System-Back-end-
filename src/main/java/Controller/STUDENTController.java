@@ -1,8 +1,7 @@
 package Controller;
 
-
-import Model.Admin;
-import Repository.AdminRepo;
+import Model.Student;
+import Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,19 +14,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
-public class ADMINController {
+@RequestMapping("/student")
+public class STUDENTController {
 
     @Autowired
-    AdminRepo adminRepo;
+    StudentRepo studentRepo;
 
-    @PostMapping("/addAdmin")
-    Admin addAdmin(@RequestBody Admin newAdmin){
-        return adminRepo.save(newAdmin);
+    @PostMapping("/addStudent")
+    Student addStudent(@RequestBody Student newStudent){
+        return studentRepo.save(newStudent);
     }
 
-    @GetMapping("/getAllAdmins")
-    List<Admin>getAllAdmins(){
-        return adminRepo.findAll();
+    @GetMapping("/getAllStudents")
+    List<Student> getAllStudents(){
+        return studentRepo.findAll();
     }
+
+
 }
