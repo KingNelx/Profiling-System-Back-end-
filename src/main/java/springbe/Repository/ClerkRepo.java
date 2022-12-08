@@ -1,6 +1,6 @@
-package Repository;
+package springbe.Repository;
 
-import Model.Clerk;
+import springbe.Model.Clerk;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClerkRepo extends JpaRepository<Clerk, Long> {

@@ -1,28 +1,25 @@
-package Model;
+package springbe.Model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import lombok.NoArgsConstructor;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Entity;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="MainADMIN")
-public class Admin {
+public class Faculty {
 
     @Id
     @GeneratedValue
     private @Getter @Setter Long id;
-    @Column(nullable = false)
+    private @Getter @Setter String firstName;
+    private @Getter @Setter String lastName;
     private @Getter @Setter String userName;
-    @Column(nullable = false)
     private @Getter @Setter String email;
-    @Column(nullable = false)
     private @Getter @Setter String password;
 }
