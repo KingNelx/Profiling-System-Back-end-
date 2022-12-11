@@ -13,7 +13,7 @@ import java.util.List;
 public class STUDENTController {
 
     @Autowired
-    StudentRepo studentRepo;
+    private StudentRepo studentRepo;
 
     @PostMapping("/addStudent")
     Student addStudent(@RequestBody Student newStudent){

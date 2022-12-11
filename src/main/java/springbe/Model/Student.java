@@ -9,7 +9,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
-import java.sql.Date;
 import javax.persistence.Column;
 
 @AllArgsConstructor
@@ -36,8 +35,8 @@ public class Student {
     private @Getter @Setter String permanentAddress;
     private @Getter @Setter String temporaryAddress;
     private @Getter @Setter String gender;
-    @DateTimeFormat(pattern="dd/MM/yyyy")
-    private @Getter @Setter Date dateOfBirth;
+//    @DateTimeFormat(pattern="dd/MM/yyyy")
+    private @Getter @Setter String dateOfBirth;
     private @Getter @Setter String placeOfBirth;
     private @Getter @Setter String citizenship;
     private @Getter @Setter String civilStatus;
