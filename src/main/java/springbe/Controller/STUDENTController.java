@@ -1,5 +1,6 @@
 package springbe.Controller;
 
+import springbe.Exception.StudentNotFoundException;
 import springbe.Model.Student;
 import springbe.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,75 +26,78 @@ public class STUDENTController {
         return studentRepo.findAll();
     }
 
-    // bsit1
-//    @GetMapping("/getBSIT1")
-//    List<String> getAllBSIT1(){
-//        return studentRepo.getAllBSIT1();
-//    }
-//
-//    // bsit2
-//    @GetMapping("/getBSIT2")
-//    List<String> getAllBSIT2(){
-//        return studentRepo.getAllBSIT2();
-//    }
-//
-//    // bsit3
-//    @GetMapping("/getBSIT3")
-//    List<String> getAllBSIT3(){
-//        return studentRepo.getAllBSIT3();
-//    }
-//
-//    // bsit4
-//    @GetMapping("/getBSIT4")
-//    List<String> getAllBSIT4(){
-//        return studentRepo.getAllBSIT4();
-//    }
-//
-//    // bsis1
-//    @GetMapping("/getBSIS1")
-//    List<String> getAllBSIS1(){
-//        return studentRepo.getAllBSIS1();
-//    }
-//
-//    // bsis2
-//    @GetMapping("/getBSIS2")
-//    List<String> getAllBSIS2(){
-//        return studentRepo.getAllBSIS2();
-//    }
-//
-//    // bsis3
-//    @GetMapping("/getBSIS3")
-//    List<String> getAllBSIS3(){
-//        return studentRepo.getAllBSIS3();
-//    }
-//
-//    // bsis4
-//    @GetMapping("/getBSIS4")
-//    List<String> getAllBSIS4(){
-//        return studentRepo.getAllBSIS4();
-//    }
-//
-//    // bsc1
-//    @GetMapping("/getBSCS1")
-//    List<String> getAllBSCS1(){
-//        return studentRepo.getAllBSCS1();
-//    }
-//
-//    // bsc2
-//    @GetMapping("/getBSCS2")
-//    List<String> getAllBSCS2(){
-//        return studentRepo.getAllBSCS2();
-//    }
-//
-//    // bsc3
-//    @GetMapping("/getBSCS3")
-//    List<String> getAllBSCS3(){
-//        return studentRepo.getAllBSCS3();
-//    }
-//
-//    // bsc4
-//    @GetMapping("/getBSCS4")
-//    List<String> getAllBSCS4(){
-//        return studentRepo.getAllBSCS4();
-//    }
+    @GetMapping("/students/{id}")
+    Student getStudentById(@PathVariable Long id){
+        return studentRepo.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
+    }
+
+    @PutMapping("/students/{id}")
+    Student updateStudent(@RequestBody Student newStudent, @PathVariable Long id){
+        return studentRepo.findById(id).map(student -> {
+            student.setLastName(newStudent.getLastName());
+            student.setFirstName(newStudent.getFirstName());
+            student.setMiddleName(newStudent.getMiddleName());
+            student.setStudentID(newStudent.getStudentID());
+            student.setYearLevel(newStudent.getYearLevel());
+            student.setBlock(newStudent.getBlock());
+            student.setCourse(newStudent.getCourse());
+            student.setEmailAddress(newStudent.getEmailAddress());
+            student.setFacebookAccount(newStudent.getFacebookAccount());
+            student.setMobileNumber(newStudent.getMobileNumber());
+            student.setPermanentAddress(newStudent.getPermanentAddress());
+            student.setTemporaryAddress(newStudent.getTemporaryAddress());
+            student.setGender(newStudent.getTemporaryAddress());
+            student.setDateOfBirth(newStudent.getDateOfBirth());
+            student.setPlaceOfBirth(newStudent.getPlaceOfBirth());
+            student.setCitizenship(newStudent.getCitizenship());
+            student.setScholarship(newStudent.getScholarship());
+            student.setGadgetsUsingForStudy(newStudent.getGadgetsUsingForStudy());
+            student.setStatusOfInternet(newStudent.getStatusOfInternet());
+            student.setElementarySchool(newStudent.getElementarySchool());
+            student.setJuniorHighSchool(newStudent.getJuniorHighSchool());
+            student.setSeniorHighSchool(newStudent.getSeniorHighSchool());
+            student.setCollege(newStudent.getCollege());
+            student.setElementaryDegree(newStudent.getElementaryDegree());
+            student.setElementaryStartDate(newStudent.getElementaryStartDate());
+            student.setElementaryHonorsReceived(newStudent.getElementaryHonorsReceived());
+            student.setJuniorDegree(newStudent.getJuniorDegree());
+            student.setJuniorStartDate(newStudent.getJuniorStartDate());
+            student.setJuniorHonorsReceived(newStudent.getJuniorHonorsReceived());
+            student.setSeniorHighDegree(newStudent.getSeniorHighDegree());
+            student.setSeniorHighStartDate(newStudent.getSeniorHighStartDate());
+            student.setSeniorHighHonorsReceived(newStudent.getSeniorHighHonorsReceived());
+            student.setFathersSurname(newStudent.getFathersSurname());
+            student.setFathersGivenName(newStudent.getFathersGivenName());
+            student.setFathersMiddleName(newStudent.getFathersMiddleName());
+            student.setFathersAddress(newStudent.getFathersAddress());
+            student.setFathersHighestEducation(newStudent.getFathersHighestEducation());
+            student.setFathersOccupation(newStudent.getFathersOccupation());
+            student.setFathersCompany(newStudent.getFathersCompany());
+            student.setFathersMobileNumber(newStudent.getFathersMobileNumber());
+            student.setFathersMonthlyIncome(newStudent.getFathersMonthlyIncome());
+            student.setFathersEmailAddress(newStudent.getFathersEmailAddress());
+            student.setMothersSurname(newStudent.getMothersSurname());
+            student.setMothersAddress(newStudent.getMothersGivenName());
+            student.setMothersMiddleName(newStudent.getMothersMiddleName());
+            student.setMothersAddress(newStudent.getMothersAddress());
+            student.setMothersHighestEducation(newStudent.getMothersHighestEducation());
+            student.setMothersOccupation(newStudent.getMothersOccupation());
+            student.setMothersCompany(newStudent.getMothersCompany());
+            student.setMothersMobileNumber(newStudent.getMothersMobileNumber());
+            student.setMothersMonthlyIncome(newStudent.getMothersMonthlyIncome());
+            student.setMothersEmailAddress(newStudent.getMothersEmailAddress());
+            return studentRepo.save(student);
+        }).orElseThrow(() -> new StudentNotFoundException(id));
+    }
+
+    @DeleteMapping("/students/{id}")
+    String deleteUserById(@PathVariable Long id){
+        if(!studentRepo.existsById(id))
+        {
+            throw new StudentNotFoundException(id);
+        }
+        studentRepo.deleteById(id);
+        return "Student with id: "+id+" has been deleted successfully";
+    }
+
 }
