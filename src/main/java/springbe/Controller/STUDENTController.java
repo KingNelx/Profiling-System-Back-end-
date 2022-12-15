@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class STUDENTController {
 
     @Autowired
@@ -19,6 +18,10 @@ public class STUDENTController {
     @PostMapping("/addStudent")
     Student addStudent(@RequestBody Student newStudent){
         return studentRepo.save(newStudent);
+    }
+    @PostMapping("/studCred")
+    Student studCred (@RequestBody Student studCred) {
+        return studentRepo.save(studCred);
     }
 
     @GetMapping("/getAllStudents")
@@ -46,7 +49,7 @@ public class STUDENTController {
             student.setMobileNumber(newStudent.getMobileNumber());
             student.setPermanentAddress(newStudent.getPermanentAddress());
             student.setTemporaryAddress(newStudent.getTemporaryAddress());
-            student.setGender(newStudent.getTemporaryAddress());
+            student.setGender(newStudent.getGender());
             student.setDateOfBirth(newStudent.getDateOfBirth());
             student.setPlaceOfBirth(newStudent.getPlaceOfBirth());
             student.setCitizenship(newStudent.getCitizenship());
@@ -77,9 +80,9 @@ public class STUDENTController {
             student.setFathersMonthlyIncome(newStudent.getFathersMonthlyIncome());
             student.setFathersEmailAddress(newStudent.getFathersEmailAddress());
             student.setMothersSurname(newStudent.getMothersSurname());
-            student.setMothersAddress(newStudent.getMothersGivenName());
-            student.setMothersMiddleName(newStudent.getMothersMiddleName());
             student.setMothersAddress(newStudent.getMothersAddress());
+            student.setMothersGivenName(newStudent.getMothersGivenName());
+            student.setMothersMiddleName(newStudent.getMothersMiddleName());
             student.setMothersHighestEducation(newStudent.getMothersHighestEducation());
             student.setMothersOccupation(newStudent.getMothersOccupation());
             student.setMothersCompany(newStudent.getMothersCompany());
@@ -98,6 +101,17 @@ public class STUDENTController {
         }
         studentRepo.deleteById(id);
         return "Student with id: "+id+" has been deleted successfully";
+    }
+
+
+    @GetMapping("/allBSIS")
+    List<Student> getAllBSIS(){
+        return studentRepo.findAllStudentByCourse("BSIS");
+    }
+
+    @GetMapping("/allBSIT")
+    List<Student> getAllBSIT(){
+        return studentRepo.findAllStudentByCourse("BSIT");
     }
 
 }
