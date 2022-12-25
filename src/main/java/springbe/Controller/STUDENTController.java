@@ -114,4 +114,103 @@ public class STUDENTController {
         return studentRepo.findAllStudentByCourse("BSIT");
     }
 
+    @GetMapping("/allBSCS")
+    List<Student> getAllBSCS(){
+        return studentRepo.findAllStudentByCourse("BSCS");
+    }
+
+    @GetMapping("/allMale")
+    List<Student> getAllMales(){
+        return studentRepo.findAllStudentsByGender("male");
+    }
+
+    @GetMapping("/allFemales")
+    List<Student> getAllFemales(){
+        return studentRepo.findAllStudentsByGender("female");
+    }
+
+    @GetMapping("/withScholar")
+    List<Student> getAllScholar () {
+        return studentRepo.findAllStudentByScholarship("yes");
+    }
+
+    @GetMapping("/withNoScholar")
+    List<Student> getAllWithNoScholar () {
+        return studentRepo.findAllStudentByScholarship("no");
+    }
+
+    @GetMapping("/getAllFromVirac")
+    List<Student> getAllFromVirac(){
+        return studentRepo.findAllStudentByPermanentAddress("Virac");
+    }
+
+    @GetMapping("/getAllFromSanAndress")
+    List<Student> getAllFromSanAndress(){
+        return studentRepo.findAllStudentByPermanentAddress("SanAndress");
+    }
+
+    @GetMapping("/getAllFromCaramoran")
+    List<Student> getAllFromCaramoran(){
+        return studentRepo.findAllStudentByPermanentAddress("Caramoran");
+    }
+
+    @GetMapping("/getAllFromViga")
+    List<Student> getAllFromViga(){
+        return studentRepo.findAllStudentByPermanentAddress("Viga");
+    }
+
+    @GetMapping("/getAllFromPandan")
+    List<Student> getAllFromPandan(){
+        return studentRepo.findAllStudentByPermanentAddress("Pandan");
+    }
+
+    @GetMapping("/getAllFromBato")
+    List<Student> getAllFromBato(){
+        return studentRepo.findAllStudentByPermanentAddress("Bato");
+    }
+
+    @GetMapping("/getAllFromSanMiguel")
+    List<Student> getAllFromSanMiguel(){
+        return studentRepo.findAllStudentByPermanentAddress("SanMiguel");
+    }
+
+    @GetMapping("/getAllFromBaras")
+    List<Student> getAllFromBaras(){
+        return studentRepo.findAllStudentByPermanentAddress("Baras");
+    }
+
+    @GetMapping("/getAllFromBagamanoc")
+    List<Student> getAllFromBagamanoc(){
+        return studentRepo.findAllStudentByPermanentAddress("Bagamanoc");
+    }
+
+    @GetMapping("/getAllFromPayo")
+    List<Student> getAllFromPayo(){
+        return studentRepo.findAllStudentByPermanentAddress("Payo");
+    }
+
+    @GetMapping("/getAllFromGigmoto")
+    List<Student> getAllFromGigmoto(){
+        return studentRepo.findAllStudentByPermanentAddress("Gigmoto");
+    }
+
+    @GetMapping("/getAllFrom1stYear")
+    List<Student> getAllFrom1stYear(){
+        return studentRepo.findAllStudentByYearLevel("1");
+    }
+
+    @GetMapping("/getAllFrom2ndYear")
+    List<Student> getAllFrom2ndYear(){
+        return studentRepo.findAllStudentByYearLevel("2");
+    }
+
+    @GetMapping("/getAllFrom3rdYear")
+    List<Student> getAllFrom3rdYear(){
+        return studentRepo.findAllStudentByYearLevel("3");
+    }
+
+    @GetMapping("/getALlFrom4thYear")
+    List<Student> getAllFrom4thYear(){
+        return studentRepo.findAllStudentByYearLevel("4");
+    }
 }
